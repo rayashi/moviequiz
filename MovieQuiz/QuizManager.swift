@@ -29,12 +29,15 @@ class QuizManger {
             optionsIndex.insert(Int(arc4random_uniform(UInt32(quizes.count))))
         }
         let opts = optionsIndex.map{options[$0]}
-        return (quiz, opts)
+        round = (quiz, opts)
+        return round!
     }
     
     func validateAnswer(_ answer: String) {
         guard let round = round else { return }
-        answer == round.quiz.name ? score += 1 : nil
+        if answer == round.quiz.name {
+            score += 1
+        }
     }
 }
 

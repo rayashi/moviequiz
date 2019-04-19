@@ -28,6 +28,8 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func checkAnswer(_ sender: UIButton) {
+        quizManager.validateAnswer(sender.title(for: .normal)!)
+        getNewRound()
     }
     
     @IBAction func showHideSoundBar(_ sender: UIButton) {
