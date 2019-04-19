@@ -28,6 +28,11 @@ class GameViewController: UIViewController {
         startTimer()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let finalViewController = segue.destination as! FinalViewController
+        finalViewController.score = quizManager.score
+    }
+    
     func startTimer() {
         viTimer.frame.size.width = view.frame.size.width
         UIView.animate(withDuration: 60.0, delay: 0.0, options: .curveLinear, animations: {
