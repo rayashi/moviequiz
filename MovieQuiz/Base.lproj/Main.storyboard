@@ -114,8 +114,15 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xap-W8-ovn">
                                         <rect key="frame" x="0.0" y="138" width="414" height="295"/>
-                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="play" destination="BYZ-38-t0r" eventType="touchUpInside" id="rbu-oL-H9J"/>
+                                        </connections>
                                     </button>
+                                    <view alpha="0.45000000000000001" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QDP-Gi-Qom">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="102"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -148,6 +155,7 @@
                         <outlet property="imageQuiz" destination="rir-iJ-9h8" id="4WB-K5-y1V"/>
                         <outlet property="slider" destination="gTk-3Z-HJA" id="9xz-lW-njx"/>
                         <outlet property="viSoundbar" destination="Fs3-8U-zxa" id="Xc1-Yl-6gm"/>
+                        <outlet property="viTimer" destination="QDP-Gi-Qom" id="iUU-XL-Qsp"/>
                         <outletCollection property="btOptions" destination="gRd-SJ-5IP" collectionClass="NSMutableArray" id="l5q-Xr-j0l"/>
                         <outletCollection property="btOptions" destination="bSg-Qo-Rcd" collectionClass="NSMutableArray" id="m52-As-SwI"/>
                         <outletCollection property="btOptions" destination="sxr-x9-rA4" collectionClass="NSMutableArray" id="6Ub-xY-cg3"/>
