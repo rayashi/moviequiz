@@ -9,12 +9,16 @@ class GameViewController: UIViewController {
     @IBOutlet var btOptions: [UIButton]!
     @IBOutlet weak var imageQuiz: UIImageView!
     @IBOutlet weak var viTimer: UIView!
+    @IBOutlet weak var btnPlayPauseBackground: UIButton!
     
     var player: AVAudioPlayer!
     var quizManager = QuizManger()
+    var itemPLayer: AVPlayerItem!
+    var backgroundPlayer: AVPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        playBackgroundMusic()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,21 +59,52 @@ class GameViewController: UIViewController {
         play()
     }
     
+    func playBackgroundMusic() {
+        let url = Bundle.main.url(forResource: "MarchaImperial", withExtension: "mp3")!
+        itemPLayer = AVPlayerItem(url: url)
+        backgroundPlayer = AVPlayer(playerItem: itemPLayer)
+        backgroundPlayer.volume = 0.1
+        backgroundPlayer.play()
+        backgroundPlayer.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: nil) { time in
+            let percent = time.seconds / self.itemPLayer.duration.seconds
+            self.slider.setValue(Float(percent), animated: true)
+        }
+    }
+    
     @IBAction func checkAnswer(_ sender: UIButton) {
         quizManager.validateAnswer(sender.title(for: .normal)!)
         getNewRound()
     }
     
     @IBAction func showHideSoundBar(_ sender: UIButton) {
-        viSoundbar.isHidden = !viSoundbar.isHidden
+        if viSoundbar.isHidden {
+            self.viSoundbar.isHidden = false
+            UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveLinear, animations: {
+                self.viSoundbar.alpha = 1
+            }) { success in
+                self.viSoundbar.isHidden = false
+            }
+        } else {
+            UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveLinear, animations: {
+                self.viSoundbar.alpha = 0
+            }) { success in
+                self.viSoundbar.isHidden = true
+            }
+        }
     }
     
-    @IBAction func changeMusciStatus(_ sender: Any) {
-        
+    @IBAction func changeMusciStatus(_ sender: UIButton) {
+        if backgroundPlayer.timeControlStatus == .paused {
+            backgroundPlayer.play()
+            sender.setImage(UIImage(named: "pause"), for: .normal)
+        } else {
+            backgroundPlayer.pause()
+            sender.setImage(UIImage(named: "play"), for: .normal)
+        }
     }
     
     @IBAction func changeMusicTime(_ sender: UISlider) {
-        
+        backgroundPlayer.seek(to: CMTime(seconds: Double(sender.value) * itemPLayer.duration.seconds, preferredTimescale: 1))
     }
 }
 

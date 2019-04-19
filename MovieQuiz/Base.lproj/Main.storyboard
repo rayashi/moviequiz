@@ -21,13 +21,6 @@
                             <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fs3-8U-zxa">
                                 <rect key="frame" x="0.0" y="816" width="414" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAg-XV-n1o">
-                                        <rect key="frame" x="376" y="17" width="23" height="23"/>
-                                        <state key="normal" image="music"/>
-                                        <connections>
-                                            <action selector="showHideSoundBar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gyt-gR-jNv"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iyX-o9-elh">
                                         <rect key="frame" x="15" y="17" width="23" height="23"/>
                                         <state key="normal" image="pause"/>
@@ -45,13 +38,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="gTk-3Z-HJA" firstAttribute="centerY" secondItem="iyX-o9-elh" secondAttribute="centerY" id="3Lf-tX-qkW"/>
-                                    <constraint firstAttribute="bottom" secondItem="OAg-XV-n1o" secondAttribute="bottom" constant="40" id="4Fo-0i-Ges"/>
-                                    <constraint firstItem="OAg-XV-n1o" firstAttribute="leading" secondItem="gTk-3Z-HJA" secondAttribute="trailing" constant="15" id="4h2-qt-psQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="gTk-3Z-HJA" secondAttribute="trailing" constant="53" id="6Qp-Yy-FUu"/>
                                     <constraint firstAttribute="height" constant="80" id="CzB-xw-Ety"/>
-                                    <constraint firstAttribute="trailing" secondItem="OAg-XV-n1o" secondAttribute="trailing" constant="15" id="Ugw-yR-Iql"/>
+                                    <constraint firstAttribute="bottom" secondItem="iyX-o9-elh" secondAttribute="bottom" constant="40" id="UAv-qL-Wq8"/>
                                     <constraint firstItem="gTk-3Z-HJA" firstAttribute="leading" secondItem="iyX-o9-elh" secondAttribute="trailing" constant="15" id="Xub-Uz-3Zv"/>
                                     <constraint firstItem="iyX-o9-elh" firstAttribute="leading" secondItem="Fs3-8U-zxa" secondAttribute="leading" constant="15" id="egd-95-XjJ"/>
-                                    <constraint firstItem="iyX-o9-elh" firstAttribute="centerY" secondItem="OAg-XV-n1o" secondAttribute="centerY" id="lqF-xb-ecJ"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Be3-xL-3VY">
@@ -136,15 +127,24 @@
                                     <constraint firstAttribute="trailing" secondItem="rir-iJ-9h8" secondAttribute="trailing" id="rb8-pl-9KR"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAg-XV-n1o">
+                                <rect key="frame" x="371" y="833" width="23" height="23"/>
+                                <state key="normal" image="music"/>
+                                <connections>
+                                    <action selector="showHideSoundBar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gyt-gR-jNv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.30757483363741456" green="0.21355374574178174" blue="0.52317972715736039" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OAg-XV-n1o" secondAttribute="trailing" constant="20" id="4Sx-xt-KaI"/>
                             <constraint firstItem="Pbl-mE-whh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7NI-9g-xPA"/>
                             <constraint firstItem="Pbl-mE-whh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="8sP-0Y-lqc"/>
                             <constraint firstItem="Fs3-8U-zxa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Cyw-m8-KsE"/>
                             <constraint firstItem="Be3-xL-3VY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Dg3-zd-yHV"/>
                             <constraint firstAttribute="trailing" secondItem="Fs3-8U-zxa" secondAttribute="trailing" id="FQt-CA-3g5"/>
                             <constraint firstItem="Pbl-mE-whh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NF8-Qi-qk8"/>
+                            <constraint firstItem="OAg-XV-n1o" firstAttribute="centerY" secondItem="gTk-3Z-HJA" secondAttribute="centerY" id="SyO-0l-tIm"/>
                             <constraint firstItem="Fs3-8U-zxa" firstAttribute="top" secondItem="Be3-xL-3VY" secondAttribute="bottom" constant="20" id="f8S-D4-I3f"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Be3-xL-3VY" secondAttribute="trailing" id="fbE-cg-oZn"/>
                             <constraint firstAttribute="bottom" secondItem="Fs3-8U-zxa" secondAttribute="bottom" id="vyn-aN-WCz"/>
@@ -152,6 +152,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="btnPlayPauseBackground" destination="iyX-o9-elh" id="6tI-92-ib9"/>
                         <outlet property="imageQuiz" destination="rir-iJ-9h8" id="4WB-K5-y1V"/>
                         <outlet property="slider" destination="gTk-3Z-HJA" id="9xz-lW-njx"/>
                         <outlet property="viSoundbar" destination="Fs3-8U-zxa" id="Xc1-Yl-6gm"/>
